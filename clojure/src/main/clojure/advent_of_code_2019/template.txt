@@ -1,0 +1,24 @@
+(ns advent-of-code-2019.day
+  (:require [advent-of-code-2019.common :as common]))
+
+;; Input
+
+(def real-input
+  (->> (common/input-path 1)
+       ))
+
+;; Part 1
+
+(defn solve-1 [input]
+  )
+
+(comment
+  (solve-1 real-input))
+
+;; Part 2
+
+(defn solve-2 [input]
+  )
+
+(comment
+  (solve-2 real-input))

@@ -3,16 +3,17 @@
 
 ;; Input
 
-(def real-input
+(defn parse-input [s]
   {:position 0
-   :tape     (-> (common/input-path 2)
-                 (common/string)
+   :tape     (-> s
                  (common/separated ",")
                  (common/->ints)
                  (vec))
    :halted?  false})
 
 ;; Part 1
+
+;; Intcode version 1
 
 (defmulti execute
           (fn [{:keys [position tape]}]
@@ -35,26 +36,20 @@
 (defmethod execute 99 [state]
   (assoc state :halted? true))
 
-(defn solve-1 [input noun verb]
-  (loop [{:keys [halted? tape] :as state} (-> input
+(defn solve-1 [initial-state noun verb]
+  (loop [{:keys [halted? tape] :as state} (-> initial-state
                                               (assoc-in [:tape 1] noun)
                                               (assoc-in [:tape 2] verb))]
     (if halted?
       (tape 0)
       (recur (execute state)))))
 
-(comment
-  (solve-1 real-input 12 2))
-
 ;; Part 2
 
-(defn solve-2 [input]
+(defn solve-2 [initial-state]
   (first
     (for [noun (range 0 100)
           verb (range 0 100)
-          :let [output (solve-1 input noun verb)]
+          :let [output (solve-1 initial-state noun verb)]
           :when (== 19690720 output)]
       (+ verb (* 100 noun)))))
-
-(comment
-  (solve-2 real-input))

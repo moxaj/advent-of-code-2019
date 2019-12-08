@@ -1,1 +1,2 @@
-{:paths ["src/main/clojure" "src/main/resources"]}
+{:paths ["src/main/clojure" "src/main/resources"
+         "src/test/clojure" "src/test/resources"]}

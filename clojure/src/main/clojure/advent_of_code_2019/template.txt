@@ -3,22 +3,17 @@
 
 ;; Input
 
-(def real-input
-  (->> (common/input-path 1)
-       ))
+(defn parse-input [path]
+  (->> path))
 
 ;; Part 1
 
-(defn solve-1 [input]
-  )
-
-(comment
-  (solve-1 real-input))
+(defn solve-1 [])
 
 ;; Part 2
 
-(defn solve-2 [input]
-  )
+(defn solve-2 [])
 
 (comment
-  (solve-2 real-input))
+  (solve-1)
+  (solve-2))

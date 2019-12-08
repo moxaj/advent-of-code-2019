@@ -1,0 +1,12 @@
+(ns advent-of-code-2019.day-test
+  (:require [clojure.test :refer [deftest is run-tests]]
+            [advent-of-code-2019.common :as common]
+            [advent-of-code-2019.day :as day]))
+
+(deftest real-test
+  (let [input (->> (common/path "day.txt") (common/string) (day/parse-input))]
+    (is (== (day/solve-1 input)))
+    (is (== (day/solve-2 input)))))
+
+(comment
+  (run-tests))

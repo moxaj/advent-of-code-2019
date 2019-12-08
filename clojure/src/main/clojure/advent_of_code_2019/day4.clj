@@ -1,9 +1,5 @@
 (ns advent-of-code-2019.day4)
 
-;; Input
-
-(def real-input [359282 820401])
-
 ;; Part 1
 
 (defn to-digits [n]
@@ -19,9 +15,6 @@
                              (some (fn [[a b]] (= a b))))))))
        (count)))
 
-(comment
-  (solve-1 real-input))
-
 ;; Part 2
 
 (defn solve-2 [[a b]]
@@ -34,6 +27,3 @@
                              (map count)
                              (some #(= 2 %)))))))
        (count)))
-
-(comment
-  (solve-2 real-input))

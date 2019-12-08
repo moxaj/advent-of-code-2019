@@ -3,8 +3,8 @@
 
 ;; Input
 
-(def real-input
-  (->> (common/input-path 3)
+(defn parse-input [s]
+  (->> s
        (common/lines)
        (mapv (fn [line]
                (let [moves (.split line ",")]
@@ -22,14 +22,14 @@
 (defn move [[x y] direction]
   (case direction
     :right [x (inc y)]
-    :left  [x (dec y)]
-    :up    [(inc x) y]
-    :down  [(dec x) y]))
+    :left [x (dec y)]
+    :up [(inc x) y]
+    :down [(dec x) y]))
 
 (defn manhattan-distance [[x y]]
   (+ (Math/abs ^long x) (Math/abs ^long y)))
 
-(defn solve-1 [input]
+(defn solve-1 [wires]
   (:min-distance
     (reduce (fn [state wire]
               (reduce (fn [state [direction distance]]
@@ -46,20 +46,17 @@
                       wire))
             {:grid         {}
              :min-distance Integer/MAX_VALUE}
-            input)))
-
-(comment
-  (solve-1 real-input))
+            wires)))
 
 ;; Part 2
 
-(defn solve-2 [input]
+(defn solve-2 [wires]
   (:min-distance
     (reduce (fn [state wire]
               (reduce (fn [state [direction distance]]
                         (reduce (fn [{:keys [grid position min-distance steps]} direction]
                                   (let [position' (move position direction)
-                                        steps'    (inc steps)]
+                                        steps' (inc steps)]
                                     {:grid         (update-in grid [position' wire] (fn [steps] (or steps steps')))
                                      :position     position'
                                      :min-distance (if-let [other-steps (let [other-steps (-> (grid position')
@@ -76,7 +73,4 @@
                       wire))
             {:grid         {}
              :min-distance Integer/MAX_VALUE}
-            input)))
-
-(comment
-  (solve-2 real-input))
+            wires)))

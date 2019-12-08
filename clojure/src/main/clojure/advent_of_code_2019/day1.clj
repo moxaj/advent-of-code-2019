@@ -3,23 +3,20 @@
 
 ;; Input
 
-(def real-input
-  (->> (common/input-path 1)
+(defn parse-input [s]
+  (->> s
        (common/lines)
        (common/->ints)))
 
 ;; Part 1
 
 (defn fuel [k]
-  (-> k (/ 3) (Math/floor) (- 2) (int) (max 0)))
+  (-> k (quot 3) (- 2) (max 0)))
 
-(defn solve-1 [input]
-  (->> input
+(defn solve-1 [masses]
+  (->> masses
        (map fuel)
        (reduce +)))
-
-(comment
-  (solve-1 real-input))
 
 ;; Part 2
 
@@ -29,10 +26,7 @@
       f
       (+ f (recursive-fuel f)))))
 
-(defn solve-2 [input]
-  (->> input
+(defn solve-2 [masses]
+  (->> masses
        (map recursive-fuel)
        (reduce +)))
-
-(comment
-  (solve-2 real-input))

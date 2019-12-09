@@ -12,7 +12,7 @@
   (seq (.split s separator)))
 
 (defn lines [s]
-  (separated s "[\r\n]"))
+  (separated s "[\r\n]+"))
 
 (defn ->int [s]
   (Integer/parseInt s))

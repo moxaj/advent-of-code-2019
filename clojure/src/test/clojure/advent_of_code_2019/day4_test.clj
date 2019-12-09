@@ -3,9 +3,9 @@
             [advent-of-code-2019.day4 :as day4]))
 
 (deftest real-test
-  (let [input [359282 820401]]
-    (is (== (day4/solve-1 input)))
-    (is (== (day4/solve-2 input)))))
+  (let [bounds [359282 820401]]
+    (is (== 511 (day4/solve-1 bounds)))
+    (is (== 316 (day4/solve-2 bounds)))))
 
 (comment
   (run-tests))

@@ -1,11 +1,11 @@
 (ns advent-of-code-2019.day6
-  (:require [advent-of-code-2019.common :as common]))
+  (:require [advent-of-code-2019.parse :as parse]))
 
 ;; Input
 
 (defn parse-input [s]
   (->> s
-       (common/lines)
+       (parse/lines)
        (map (fn [line]
               (seq (.split line "\\)"))))))
 

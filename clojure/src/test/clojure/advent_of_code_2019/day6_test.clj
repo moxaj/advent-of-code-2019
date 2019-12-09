@@ -1,6 +1,6 @@
 (ns advent-of-code-2019.day6-test
-  (:require [clojure.test :refer [deftest is run-tests]]
-            [advent-of-code-2019.common :as common]
+  (:require [clojure.test :refer [deftest is]]
+            [advent-of-code-2019.parse :as parse]
             [advent-of-code-2019.day6 :as day6]))
 
 (deftest example-1-test
@@ -12,9 +12,6 @@
     (is (== 4 (day6/solve-2 nodes)))))
 
 (deftest real-test
-  (let [nodes (->> (common/path "day6.txt") (common/string) (day6/parse-input))]
+  (let [nodes (->> (parse/path "day6.txt") (parse/string) (day6/parse-input))]
     (is (== 308790 (day6/solve-1 nodes)))
     (is (== 472 (day6/solve-2 nodes)))))
-
-(comment
-  (run-tests))

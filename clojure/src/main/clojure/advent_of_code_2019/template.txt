@@ -1,5 +1,5 @@
 (ns advent-of-code-2019.day
-  (:require [advent-of-code-2019.common :as common]))
+  (:require [advent-of-code-2019.parse :as parse]))
 
 ;; Input
 

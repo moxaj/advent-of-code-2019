@@ -1,12 +1,12 @@
 (ns advent-of-code-2019.day1
-  (:require [advent-of-code-2019.common :as common]))
+  (:require [advent-of-code-2019.parse :as parse]))
 
 ;; Input
 
 (defn parse-input [s]
   (->> s
-       (common/lines)
-       (common/->ints)))
+       (parse/lines)
+       (parse/longs)))
 
 ;; Part 1
 

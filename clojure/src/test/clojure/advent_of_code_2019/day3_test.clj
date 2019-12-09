@@ -1,6 +1,6 @@
 (ns advent-of-code-2019.day3-test
-  (:require [clojure.test :refer [deftest is run-tests]]
-            [advent-of-code-2019.common :as common]
+  (:require [clojure.test :refer [deftest is]]
+            [advent-of-code-2019.parse :as parse]
             [advent-of-code-2019.day3 :as day3]))
 
 (deftest example-1-test
@@ -14,9 +14,6 @@
     (is (== 410 (day3/solve-2 wires)))))
 
 (deftest real-test
-  (let [wires (->> (common/path "day3.txt") (common/string) (day3/parse-input))]
+  (let [wires (->> (parse/path "day3.txt") (parse/string) (day3/parse-input))]
     (is (== 303 (day3/solve-1 wires)))
     (is (== 11222 (day3/solve-2 wires)))))
-
-(comment
-  (run-tests))

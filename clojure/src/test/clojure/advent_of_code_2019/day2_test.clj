@@ -1,6 +1,6 @@
 (ns advent-of-code-2019.day2-test
-  (:require [clojure.test :refer [deftest is run-tests]]
-            [advent-of-code-2019.common :as common]
+  (:require [clojure.test :refer [deftest is]]
+            [advent-of-code-2019.parse :as parse]
             [advent-of-code-2019.day2 :as day2]))
 
 (deftest example-1-test
@@ -8,9 +8,6 @@
     (is (== 3500 (day2/solve-1 initial-state 9 10)))))
 
 (deftest real-test
-  (let [initial-state (->> (common/path "day2.txt") (common/string) (day2/parse-input))]
+  (let [initial-state (->> (parse/path "day2.txt") (parse/string) (day2/parse-input))]
     (is (== 2890696 (day2/solve-1 initial-state 12 2)))
     (is (== 8226 (day2/solve-2 initial-state)))))
-
-(comment
-  (run-tests))

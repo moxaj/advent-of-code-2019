@@ -1,4 +1,5 @@
-(ns advent-of-code-2019.common
+(ns advent-of-code-2019.parse
+  (:refer-clojure :exclude [long longs])
   (:import [java.nio.file Paths Files]
            [java.nio.charset StandardCharsets]))
 
@@ -14,8 +15,8 @@
 (defn lines [s]
   (separated s "[\r\n]+"))
 
-(defn ->int [s]
-  (Integer/parseInt s))
+(defn long [s]
+  (Long/parseLong s))
 
-(defn ->ints [coll]
-  (map ->int coll))
+(defn longs [coll]
+  (map long coll))

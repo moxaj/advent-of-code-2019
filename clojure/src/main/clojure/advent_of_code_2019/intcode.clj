@@ -67,10 +67,10 @@
   (let [[input & inputs] inputs]
     (if-not input
       (assoc state :run-state :waiting)
-      (let [[param-0] (params state [:write])]
+      (let [[param-1] (params state [:write])]
         (-> state
             (update :position + 2)
-            (update :tape safe-assoc param-0 input)
+            (update :tape safe-assoc param-1 input)
             (assoc :inputs inputs))))))
 
 (defmethod execute 4 [state]

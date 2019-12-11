@@ -44,11 +44,7 @@
                 (if (->> states (map :run-state) (every? #{:halted}))
                   (->> states (peek) :outputs (peek))
                   (let [prev-index (mod (dec index) 5)]
-                    (recur (-> states
-                               (update prev-index update :outputs empty)
-                               (update index (fn [state]
-                                               (intcode/run (-> state
-                                                                (assoc :run-state :running)
-                                                                (update :inputs into (:outputs (states prev-index))))))))
+                    (recur (update states index (fn [state]
+                                                  (intcode/run (update state :inputs into (:outputs (states prev-index))))))
                            (mod (inc index) 5)))))))
        (apply max)))

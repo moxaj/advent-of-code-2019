@@ -22,8 +22,8 @@
            (if (neg? k)
              v
              (into v (repeat k 0))))
-    index
-    value))
+         index
+         value))
 
 (defn param-modes [instruction param-count]
   (let [param-modes (-> instruction (quot 100) (str) (reverse) (vec))]
@@ -95,17 +95,13 @@
   (let [[param-1 param-2 param-3] (params state [:read :read :write])]
     (-> state
         (update :position + 4)
-        (update :tape safe-assoc param-3 (if (< param-1 param-2)
-                                           1
-                                           0)))))
+        (update :tape safe-assoc param-3 (if (< param-1 param-2) 1 0)))))
 
 (defmethod execute 8 [state]
   (let [[param-1 param-2 param-3] (params state [:read :read :write])]
     (-> state
         (update :position + 4)
-        (update :tape safe-assoc param-3 (if (= param-1 param-2)
-                                           1
-                                           0)))))
+        (update :tape safe-assoc param-3 (if (= param-1 param-2) 1 0)))))
 
 (defmethod execute 9 [state]
   (let [[param-1] (params state [:read])]

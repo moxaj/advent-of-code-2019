@@ -8,7 +8,11 @@
             [advent-of-code-2019.day6-test]
             [advent-of-code-2019.day7-test]
             [advent-of-code-2019.day8-test]
-            [advent-of-code-2019.day9-test]))
+            [advent-of-code-2019.day9-test]
+            [advent-of-code-2019.day10-test]
+            [advent-of-code-2019.day11-test]
+            [advent-of-code-2019.day12-test]))
+
 
 (defmacro run-my-tests []
   `(let [namespaces# (->> (range 1 26)

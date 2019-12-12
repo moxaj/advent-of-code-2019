@@ -1,9 +1,0 @@
-(ns advent-of-code-2019.day-test
-  (:require [clojure.test :refer [deftest is run-tests]]
-            [advent-of-code-2019.parse :as parse]
-            [advent-of-code-2019.day :as day]))
-
-(deftest real-test
-  (let [input (->> (parse/path "day.txt") (parse/string) (day/parse-input))]
-    (is (== (day/solve-1 input)))
-    (is (== (day/solve-2 input)))))

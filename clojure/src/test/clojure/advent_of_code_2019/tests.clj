@@ -12,7 +12,8 @@
             [advent-of-code-2019.day10-test]
             [advent-of-code-2019.day11-test]
             [advent-of-code-2019.day12-test]
-            [advent-of-code-2019.day13-test]))
+            [advent-of-code-2019.day13-test]
+            [advent-of-code-2019.day14-test]))
 
 (defmacro run-my-tests []
   `(let [namespaces# (->> (range 1 26)

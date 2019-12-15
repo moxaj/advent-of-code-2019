@@ -9,9 +9,7 @@
 ;; Part 1
 
 (defn solve-1 [initial-state noun verb]
-  (->> (-> initial-state
-           (assoc-in [:tape 1] noun)
-           (assoc-in [:tape 2] verb))
+  (->> (update initial-state :tape assoc 1 noun 2 verb)
        (intcode/run)
        :tape
        (first)))

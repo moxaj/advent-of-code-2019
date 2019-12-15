@@ -25,7 +25,7 @@
          position  [0 0]
          direction 0]
     (let [{:keys [run-state outputs] :as state'}
-          (intcode/run (assoc state :inputs [(grid position 0)]))]
+          (intcode/run state (grid position 0))]
       (if (= :halted run-state)
         grid
         (let [[color turn-signal] outputs

@@ -112,9 +112,10 @@
 (defmethod execute 99 [state]
   (assoc state :run-state :halted))
 
-(defn run [initial-state]
+(defn run [initial-state & inputs]
   (loop [{:keys [run-state] :as state} (-> initial-state
                                            (assoc :run-state :running)
+                                           (update :inputs into inputs)
                                            (update :outputs empty))]
     (when *debug*
       (Thread/sleep 500)

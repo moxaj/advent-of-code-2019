@@ -22,8 +22,7 @@
   (->> (permutations [0 1 2 3 4])
        (map (fn [phases]
               (reduce (fn [prev-output phase]
-                        (->> (assoc initial-state :inputs [phase prev-output])
-                             (intcode/run)
+                        (->> (intcode/run initial-state phase prev-output)
                              :outputs
                              (peek)))
                       0
@@ -45,6 +44,6 @@
                   (->> states (peek) :outputs (peek))
                   (let [prev-index (mod (dec index) 5)]
                     (recur (update states index (fn [state]
-                                                  (intcode/run (update state :inputs into (:outputs (states prev-index))))))
+                                                  (apply intcode/run state (:outputs (states prev-index)))))
                            (mod (inc index) 5)))))))
        (apply max)))

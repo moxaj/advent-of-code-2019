@@ -8,7 +8,7 @@
 
 ;; Part 1 & 2
 
-(defn solve [initial-state]
-  (->> (intcode/run initial-state)
+(defn solve [initial-state & inputs]
+  (->> (apply intcode/run initial-state inputs)
        :outputs
        (peek)))
